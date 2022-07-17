@@ -10,7 +10,6 @@ on:
 
 
 env:
-env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: ARMv8/feeds.conf.default
