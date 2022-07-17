@@ -26,11 +26,13 @@
 
 设置→机密→新机密(Settings → Secrets → New secret)，名称"RELEASES_TOKEN"，粘贴RELEASES_TOKEN值
 
-      
+---
+
 ## 电报推送消息
 
 设置方法 https://github.com/danshui-git/shuoming/blob/master/bot.md
 
+---
 
 ## 插件说明 CONFIG*PACKAGE*
 
