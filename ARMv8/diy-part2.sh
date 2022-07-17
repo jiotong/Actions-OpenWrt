@@ -17,17 +17,9 @@ sed -i 's/DEPENDS:=@(.*/DEPENDS:=@(TARGET_bcm27xx||TARGET_bcm53xx||TARGET_ipq40x
 sed -i 's/192.168.1.1/192.168.1.254/g' package/base-files/files/bin/config_generate
 
 #添加额外软件包
-cp -rf $GITHUB_WORKSPACE/general/luci-app-gost package/luci-app-gost
+#cp -rf $GITHUB_WORKSPACE/general/luci-app-gost package/luci-app-gost
 git clone https://github.com/semigodking/redsocks.git package/redsocks2
-svn co https://github.com/halldong/luci-app-speederv2/trunk package/luci-app-speederv2
-
-#添加udp2raw
-#git clone https://github.com/sensec/openwrt-udp2raw package/openwrt-udp2raw
-svn co https://github.com/sensec/openwrt-udp2raw/trunk package/openwrt-udp2raw
-#git clone https://github.com/sensec/luci-app-udp2raw package/luci-app-udp2raw
-svn co https://github.com/sensec/luci-app-udp2raw/trunk package/luci-app-udp2raw
-sed -i "s/PKG_SOURCE_VERSION:=.*/PKG_SOURCE_VERSION:=f2f90a9a150be94d50af555b53657a2a4309f287/" package/openwrt-udp2raw/Makefile
-sed -i "s/PKG_VERSION:=.*/PKG_VERSION:=20200920\.0/" package/openwrt-udp2raw/Makefile
+#svn co https://github.com/halldong/luci-app-speederv2/trunk package/luci-app-speederv2
 
 #themes
 svn co https://github.com/rosywrt/luci-theme-rosy/trunk/luci-theme-rosy package/luci-theme-rosy
@@ -69,10 +61,6 @@ sed -i "s/PKG_HASH:=783ac443cd343dd6c68d2abcf7e59e7b978a6a428f6a6025f9b84918b769
 # containerd
 cp -f $GITHUB_WORKSPACE/general/containerd/Makefile feeds/packages/utils/containerd
 
-# bsdtar
-sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=3.6.1/g' feeds/packages/libs/libarchive/Makefile
-sed -i 's/PKG_HASH:=.*/PKG_HASH:=5a411aceb978f43e626f0c2d1812ddd8807b645ed892453acabd532376c148e6/g' feeds/packages/libs/libarchive/Makefile
-
 # pcre
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=8.45/g' package/libs/pcre/Makefile
 sed -i 's/PKG_RELEASE:=.*/PKG_RELEASE:=1/g' package/libs/pcre/Makefile
@@ -90,19 +78,10 @@ sed -i 's/PKG_HASH:=.*/PKG_HASH:=04c065515bc347bc68e0bb1ac7182669a98a731e4a17727
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=5.0.3/g' feeds/packages/lang/python/python-docker/Makefile
 sed -i 's/PKG_HASH:=.*/PKG_HASH:=d916a26b62970e7c2f554110ed6af04c7ccff8e9f81ad17d0d40c75637e227fb/g' feeds/packages/lang/python/python-docker/Makefile
 
-# parted
-sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=3.5/g' feeds/packages/utils/parted/Makefile
-sed -i 's/PKG_MD5SUM:=.*/PKG_MD5SUM:=336fde60786d5855b3876ee49ef1e6b2/g' feeds/packages/utils/parted/Makefile
-
 # expat
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=2.4.8/g' feeds/packages/libs/expat/Makefile
 sed -i 's/PKG_HASH:=.*/PKG_HASH:=f79b8f904b749e3e0d20afeadecf8249c55b2e32d4ebb089ae378df479dcaf25/g' feeds/packages/libs/expat/Makefile
 #cp -f $GITHUB_WORKSPACE/general/expat/Makefile feeds/packages/libs/expat
-
-# socat
-sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.7.4.3/g' feeds/packages/net/socat/Makefile
-sed -i 's/PKG_HASH:=.*/PKG_HASH:=d47318104415077635119dfee44bcfb41de3497374a9a001b1aff6e2f0858007/g' feeds/packages/net/socat/Makefile
-sed -i '75i\	  sc_cv_getprotobynumber_r=2 \\' feeds/packages/net/socat/Makefile
 
 # transmission-web-control
 sed -i 's/PKG_SOURCE_DATE:=.*/PKG_SOURCE_DATE:=2021-09-25/g' feeds/packages/net/transmission-web-control/Makefile
@@ -217,29 +196,13 @@ sed -i 's/PKG_HASH:=.*/PKG_HASH:=ce5e03e519f637e1f814011ace35c4f87b33c0bbabeec35
 rm -rf feeds/packages/net/openssh
 cp -rf $GITHUB_WORKSPACE/general/openssh feeds/packages/net
 
-# softethervpn5
-rm -rf feeds/packages/net/softethervpn5
-svn co https://github.com/openwrt/packages/trunk/net/softethervpn5 feeds/packages/net/softethervpn5
-
-# hwdata
-sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=0.361/g' feeds/packages/utils/hwdata/Makefile
-sed -i 's/PKG_HASH:=.*/PKG_HASH:=d16c4be2a0476be039dce114401e7e8417f704eb89d9e5add7b3538dd58a2462/g' feeds/packages/utils/hwdata/Makefile
-
 # gawk
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=5.1.1/g' feeds/packages/utils/gawk/Makefile
 sed -i 's/PKG_HASH:=.*/PKG_HASH:=d87629386e894bbea11a5e00515fc909dc9b7249529dad9e6a3a2c77085f7ea2/g' feeds/packages/utils/gawk/Makefile
 
-# ocserv
-sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.1.6/g' feeds/packages/net/ocserv/Makefile
-sed -i 's/PKG_HASH:=.*/PKG_HASH:=6a6cbe92212e32280426a51c634adc3d4803579dd049cfdb7e014714cc82c693/g' feeds/packages/net/ocserv/Makefile
-
 # unrar
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=6.1.7/g' feeds/packages/utils/unrar/Makefile
 sed -i 's/PKG_HASH:=.*/PKG_HASH:=de75b6136958173fdfc530d38a0145b72342cf0d3842bf7bb120d336602d88ed/g' feeds/packages/utils/unrar/Makefile
-
-# at
-rm -rf feeds/packages/utils/at
-cp -rf $GITHUB_WORKSPACE/general/at feeds/packages/utils
 
 # alsa-utils
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.2.6/g' feeds/packages/sound/alsa-utils/Makefile
@@ -264,11 +227,6 @@ sed -i 's/PKG_HASH:=.*/PKG_HASH:=315b956951c3fea027287de204381534217c0bd0f37b493
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=0.8.3/g' feeds/packages/libs/libcap-ng/Makefile
 sed -i 's/PKG_HASH:=.*/PKG_HASH:=bed6f6848e22bb2f83b5f764b2aef0ed393054e803a8e3a8711cb2a39e6b492d/g' feeds/packages/libs/libcap-ng/Makefile
 
-# c-ares
-sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.18.1/g' feeds/packages/libs/c-ares/Makefile
-sed -i 's|PKG_SOURCE_URL:=.*|PKG_SOURCE_URL:=https://c-ares.org/download|g' feeds/packages/libs/c-ares/Makefile
-sed -i 's/PKG_HASH:=.*/PKG_HASH:=1a7d52a8a84a9fbffb1be9133c0f6e17217d91ea5a6fa61f6b4729cda78ebbcf/g' feeds/packages/libs/c-ares/Makefile
-
 # pigz
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=2.7/g' feeds/packages/utils/pigz/Makefile
 sed -i 's/PKG_HASH:=.*/PKG_HASH:=b4c9e60344a08d5db37ca7ad00a5b2c76ccb9556354b722d56d55ca7e8b1c707/g' feeds/packages/utils/pigz/Makefile
@@ -281,10 +239,6 @@ sed -i 's/PKG_SOURCE_VERSION:=.*/PKG_SOURCE_VERSION:=b5b2ba09c4f1c8b3c21580aea72
 sed -i 's/PKG_MIRROR_HASH:=.*/PKG_MIRROR_HASH:=b957d56aa8c2e7b55184111be69eb8dea734f1feba19e670a91f302459a48a78/g' package/libs/libnl-tiny/Makefile
 sed -i 's/ABI_VERSION:=.*/ABI_VERSION:=$(PKG_SOURCE_DATE)/g' package/libs/libnl-tiny/Makefile
 #sed -i '19,20d' package/libs/libnl-tiny/Makefile
-
-# exfatprogs
-sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.1.3/g' feeds/packages/utils/exfatprogs/Makefile
-sed -i 's/PKG_HASH:=.*/PKG_HASH:=e3ee4fb5af4abc9335aed7a749c319917c652ac1af687ba40aabd04a6b71f1ca/g' feeds/packages/utils/exfatprogs/Makefile
 
 # shairport-sync
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=3.3.9/g' feeds/packages/sound/shairport-sync/Makefile
@@ -316,11 +270,6 @@ sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.2022.36/g' package/luci-app-smartdns/Ma
 # readd cpufreq for aarch64
 sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' feeds/luci/applications/luci-app-cpufreq/Makefile
 sed -i 's/services/system/g'  feeds/luci/applications/luci-app-cpufreq/luasrc/controller/cpufreq.lua
-
-# luci-app-openvpn
-sed -i 's/services/vpn/g'  feeds/luci/applications/luci-app-openvpn/luasrc/controller/openvpn.lua
-sed -i 's/services/vpn/g'  feeds/luci/applications/luci-app-openvpn/luasrc/model/cbi/openvpn.lua
-sed -i 's/services/vpn/g'  feeds/luci/applications/luci-app-openvpn/luasrc/view/openvpn/pageswitch.htm
 
 #fix ntfs3 generating empty package
 sed -i 's/DEPENDS:=.*/DEPENDS:=@(LINUX_5_4||LINUX_5_10) +kmod-nls-utf8/g' package/lean/ntfs3-oot/Makefile
@@ -363,18 +312,6 @@ cp -rf $GITHUB_WORKSPACE/general/sqlite3 feeds/packages/libs
 # haproxy
 sed -i 's/PKG_RELEASE:=.*/PKG_RELEASE:=1/g' feeds/packages/net/haproxy/Makefile
 
-# perl
-rm -rf feeds/packages/lang/perl
-cp -rf $GITHUB_WORKSPACE/general/perl feeds/packages/lang
-
-# zlib
-rm -rf package/libs/zlib
-svn co https://github.com/openwrt/openwrt/trunk/package/libs/zlib package/libs/zlib
-
-# tailscale
-sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.26.2/g' feeds/packages/net/tailscale/Makefile
-sed -i 's/PKG_HASH:=.*/PKG_HASH:=303ef87926d5d02b65827a5c955308047bd4d0995abee152a4e78b4522394539/g' feeds/packages/net/tailscale/Makefile
-
 # util-linux
 rm -rf package/utils/util-linux
 cp -rf $GITHUB_WORKSPACE/general/util-linux package/utils
@@ -390,10 +327,6 @@ sed -i 's/PKG_HASH:=.*/PKG_HASH:=68271951324554c34501b85190f22f2221056db69f493af
 # libiconv-full
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.17/g' package/libs/libiconv-full/Makefile
 sed -i 's/PKG_HASH:=.*/PKG_HASH:=8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313/g' package/libs/libiconv-full/Makefile
-
-# sagernet-core
-sed -i 's|$(LN) v2ray $(1)/usr/bin/xray|#$(LN) v2ray $(1)/usr/bin/xray|g' package/sagernet-core/Makefile
-sed -i 's|CONFLICTS:=v2ray-core xray-core|#CONFLICTS:=v2ray-core xray-core|g' package/sagernet-core/Makefile
 
 # bind
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=9.18.4/g' feeds/packages/net/bind/Makefile
