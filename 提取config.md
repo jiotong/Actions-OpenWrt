@@ -2,11 +2,13 @@
 
  进入Actions，选择提取config.yml，然后单击Run workflow，设置SSH connection to Actions输入"true"  点击Run workflow运行
 
- 页面运行到“SSH远程连接 SSH connection to Actions”，会显示一个链接，点击进入SSH，按Ctrl+C进入shell模式
+ 页面运行到“SSH远程连接 SSH connection to Actions”，会显示一个链接，点击即可进入SSH，按Ctrl+C进入shell模式
 
  输入命令：cd openwrt && make menuconfig 进行个性化配置。
 
  完成后，按快捷键Ctrl+D或执行exit命令以退出，随后的编译工作将自动进行
+ 
+ 完成后到Actions下 已完成的提取config.yml下方找到config-xxxxx的压缩包下载解压
    
 ---
 
