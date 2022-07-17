@@ -108,7 +108,7 @@ jobs:
       if: (!cancelled())
       run: df -hT
    
-   - name: 固件发布信息
+    - name: 固件发布信息
       id: release
       uses: ncipollo/release-action@v1
       with:
