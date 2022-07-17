@@ -10,11 +10,13 @@ on:
 
 
 env:
+env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: aarch64/SSHCONFIG.config
-  #CONFIG_FILE: aarch64/ARMv8_SF.config   
-  DIY_P2_SH: diy-part2.sh
+  FEEDS_CONF: ARMv8/feeds.conf.default
+  CONFIG_FILE: ARMv8/ARMv8.config
+  DIY_P1_SH: ARMv8/diy-part1.sh
+  DIY_P2_SH: ARMv8/diy-part2.sh
   SSH_ACTIONS: false
   UPLOAD_CONFIG: true
   DELETE_ARTIFACTS: true   # 删除旧的工作流程运行和工件
@@ -75,7 +77,6 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
         sed -i 's/OpenWrt/MRG AutoBuild ${{ env.DATE1 }} @ OpenWrt/g' package/lean/default-settings/files/zzz-default-settings
         
     - name: SSH远程连接（配置固件）
