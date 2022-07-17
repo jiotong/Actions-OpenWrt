@@ -13,18 +13,18 @@
    
 ---
 
-## 生成TOKEN令牌
+## 创建ACTIONS脚本的RELEASES_TOKEN
 
-1 个人中心：设置→开发人员设置→个人访问令牌→生成新令牌
+·1.到个人中心创建RELEASES_TOKEN：
 
-（名称：RELEASES_TOKEN，勾择：public_repo，复制RELEASES_TOKEN令牌的值）。
+设置→开发人员设置→个人访问令牌→生成新令牌(Settings → Developer settings → Personal access tokens → Generate new token)
 
-Settings → Developer settings → Personal access tokens → Generate new token
+创建名称"RELEASES_TOKEN"，勾选"public_repo"，创建后复制RELEASES_TOKEN值。
 
-2 操作代码中心：设置→机密→新机密（名称：RELEASES_TOKEN，值：粘贴令牌的值）。
 
-Settings → Secrets → New secret
+·2.到操作代码中心填上RELEASES_TOKEN
 
+设置→机密→新机密(Settings → Secrets → New secret)，名称"RELEASES_TOKEN"，粘贴RELEASES_TOKEN值
 
       
 ## 电报推送消息
@@ -35,3 +35,5 @@ Settings → Secrets → New secret
 ## 插件说明 CONFIG*PACKAGE*
 
 恩山https://www.right.com.cn/forum/thread-3682029-1-1.html
+
+---
