@@ -107,21 +107,22 @@ jobs:
     - name: 编译后硬盘容量
       if: (!cancelled())
       run: df -hT
-        
-    - name: 固件发布信息
+   
+   - name: 固件发布信息
       id: release
       uses: ncipollo/release-action@v1
       with:
-        name: ${{ env.FILE_NAME }}-${{ env.DATE }}
+        name: ${{ env.DATE }} for ${{ env.PRODUCT_NAME }}
         allowUpdates: true
         tag: ${{ env.FILE_NAME }}
-        commit: master
+        commit: main
         token: ${{ secrets.RELEASES_TOKEN }}
         body: |
-          默认IP：192.168.2.1 默认密码：password
-          s905d(Phicomm-N1) +o版 +版（Flowoffload加速+SFE加速)
+          - 默认IP：192.168.1.254 默认密码：password
+          - 当前使用版本:【编译前的最后一次[➦主源码](https://github.com/coolsnowwolf/lede)更新记录】
+          ${{ env.useVersionInfo }}
         artifacts: ${{ env.FIRMWARE }}/*
-      
+  
     - name: 删除旧版本
       uses: dev-drprasad/delete-older-releases@master
       if: env.DELETE_RELEASE == 'true'
