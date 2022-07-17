@@ -1,15 +1,12 @@
 ## SSH 连接操作 （SSH 在线修改和提取.config ）                                                                      
 
+ 进入Actions，选择提取config.yml，然后单击Run workflow，设置SSH connection to Actions输入"true"  点击Run workflow运行
 
-  Actions→ 选择 提取config.yml→ 然后单击Run workflow右侧的按钮。设置SSH connection to Actions 输入 true  点 Run workflow 运行
+ 页面运行到“SSH远程连接 SSH connection to Actions”，会显示一个链接，点击进入SSH，按Ctrl+C进入shell模式
 
-  页面运行到SSH connection to Actions 点击显示的连接 进入SSH
+ 输入命令：cd openwrt && make menuconfig 进行个性化配置。
 
-  （Web终端可能会遇到黑屏，只需按即可Ctrl+C）
-
-   输入命令：cd openwrt && make menuconfig 进行个性化配置。
-
-   完成后，按快捷键Ctrl+D或执行exit命令以退出，随后的编译工作将自动进行
+ 完成后，按快捷键Ctrl+D或执行exit命令以退出，随后的编译工作将自动进行
    
 ---
 
@@ -17,14 +14,13 @@
 
 ·1.到个人中心创建RELEASES_TOKEN：
 
-设置→开发人员设置→个人访问令牌→生成新令牌(Settings → Developer settings → Personal access tokens → Generate new token)
+ 设置→开发人员设置→个人访问令牌→生成新令牌(Settings → Developer settings → Personal access tokens → Generate new token)
 
-创建名称"RELEASES_TOKEN"，勾选"public_repo"，创建后复制RELEASES_TOKEN值。
-
+ 创建名称"RELEASES_TOKEN"，勾选"public_repo"，创建后复制RELEASES_TOKEN值。
 
 ·2.到操作代码中心填上RELEASES_TOKEN
 
-设置→机密→新机密(Settings → Secrets → New secret)，名称"RELEASES_TOKEN"，粘贴RELEASES_TOKEN值
+ 设置→机密→新机密(Settings → Secrets → New secret)，名称"RELEASES_TOKEN"，粘贴RELEASES_TOKEN值
 
 ---
 
