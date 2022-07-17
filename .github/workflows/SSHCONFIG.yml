@@ -12,14 +12,14 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  FEEDS_CONF: ARMv8/feeds.conf.default
-  CONFIG_FILE: ARMv8/ARMv8.config
-  DIY_P1_SH: ARMv8/diy-part1.sh
-  DIY_P2_SH: ARMv8/diy-part2.sh
-  #FEEDS_CONF: feeds.conf.default
-  #CONFIG_FILE: netgear_wndr3800/netgear_wndr3800.config
-  #DIY_P1_SH: netgear_wndr3800/diy-part1.sh
-  #DIY_P2_SH: netgear_wndr3800/diy-part2.sh
+  #FEEDS_CONF: ARMv8/feeds.conf.default
+  #CONFIG_FILE: ARMv8/ARMv8.config
+  #DIY_P1_SH: ARMv8/diy-part1.sh
+  #DIY_P2_SH: ARMv8/diy-part2.sh
+  FEEDS_CONF: feeds.conf.default
+  CONFIG_FILE: netgear_wndr3800/netgear_wndr3800.config
+  DIY_P1_SH: netgear_wndr3800/diy-part1.sh
+  DIY_P2_SH: netgear_wndr3800/diy-part2.sh
   SSH_ACTIONS: false
   UPLOAD_CONFIG: true
   DELETE_ARTIFACTS: true   # 删除旧的工作流程运行和工件
