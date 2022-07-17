@@ -25,8 +25,8 @@ env:
   DELETE_RELEASE: false    # 删除旧版本true false   
   DELETE_ARTIFACTS: true  # 删除旧的工作流程运行和工件
   TZ: Asia/Shanghai
-  FILE_NAME: ARMv8
-  PRODUCT_NAME: ARMv8
+  FILE_NAME: Phicomm_N1
+  PRODUCT_NAME: Phicomm_N1
 
 jobs:
   build:
@@ -118,11 +118,8 @@ jobs:
         commit: master
         token: ${{ secrets.RELEASES_TOKEN }}
         body: |
-          默认IP：192.168.1.254 
-          默认账号root
-          默认密码wifi密码：password
-          Flippy打包 s905d(Phicomm-N1)
-          +o版 +版（Flowoffload加速+SFE加速)
+          默认IP：192.168.2.1 默认密码：password
+          s905d(Phicomm-N1) +o版 +版（Flowoffload加速+SFE加速)
         artifacts: ${{ env.FIRMWARE }}/*
       
     - name: 删除旧版本
