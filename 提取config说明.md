@@ -6,7 +6,7 @@
 
  创建名称"RELEASES_TOKEN"，勾选"public_repo"，创建后复制RELEASES_TOKEN值。
 
-·2.到操作代码中心填上RELEASES_TOKEN
+·2.到操作代码中心填上RELEASES_TOKEN值
 
  设置→机密→新机密(Settings → Secrets → New secret)，名称"RELEASES_TOKEN"，粘贴RELEASES_TOKEN值
 
