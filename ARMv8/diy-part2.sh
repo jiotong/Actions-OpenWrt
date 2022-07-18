@@ -51,6 +51,8 @@ cp -f $GITHUB_WORKSPACE/general/qBittorrent/Makefile.qt6 feeds/packages/net/qBit
 rm -rf feeds/packages/libs/libtorrent-rasterbar/patches
 cp -f $GITHUB_WORKSPACE/general/libtorrent-rasterbar/Makefile feeds/packages/libs/libtorrent-rasterbar
 
+# containerd
+cp -f $GITHUB_WORKSPACE/general/containerd/Makefile feeds/packages/utils/containerd
 
 # Qt5 -qtbase
 rm -rf feeds/packages/libs/qtbase
@@ -59,7 +61,6 @@ cp -rf $GITHUB_WORKSPACE/general/qtbase feeds/packages/libs
 # Qt5 -qttools
 rm -rf feeds/packages/libs/qttools
 cp -rf $GITHUB_WORKSPACE/general/qttools feeds/packages/libs
-
 
 # transmission-web-control
 sed -i 's/PKG_SOURCE_DATE:=.*/PKG_SOURCE_DATE:=2021-09-25/g' feeds/packages/net/transmission-web-control/Makefile
