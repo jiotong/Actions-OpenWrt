@@ -71,13 +71,8 @@ sed -i 's/PKG_MIRROR_HASH:=.*/PKG_MIRROR_HASH:=ea014c295766e2efc7b890dc6a6940176
 rm -rf feeds/packages/net/openssh
 cp -rf $GITHUB_WORKSPACE/general/openssh feeds/packages/net
 
-
 # replace banner
 cp -f $GITHUB_WORKSPACE/general/openwrt_banner package/base-files/files/etc/banner
-
-# boost
-rm -rf feeds/packages/libs/boost
-cp -r $GITHUB_WORKSPACE/general/boost feeds/packages/libs
 
 # sqlite3
 cp -rf $GITHUB_WORKSPACE/general/sqlite3 feeds/packages/libs
