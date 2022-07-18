@@ -36,13 +36,12 @@ git clone https://github.com/semigodking/redsocks.git package/redsocks2
 
 #themes
 svn co https://github.com/rosywrt/luci-theme-rosy/trunk/luci-theme-rosy package/luci-theme-rosy
-svn co https://github.com/thinktip/luci-theme-neobird/trunk package/luci-theme-neobird
+#svn co https://github.com/thinktip/luci-theme-neobird/trunk package/luci-theme-neobird
 
 # btrfs-progs
-sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=5.18/g' feeds/packages/utils/btrfs-progs/Makefile
-sed -i 's/PKG_HASH:=.*/PKG_HASH:=1de6107622b0be2f6d77261f97a2bdd40291dbb682aac7dce08632d171f7a134/g' feeds/packages/utils/btrfs-progs/Makefile
-rm -rf feeds/packages/utils/btrfs-progs/patches
-#sed -i '68i\	--disable-libudev \\' feeds/packages/utils/btrfs-progs/Makefile
+#sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=5.18/g' feeds/packages/utils/btrfs-progs/Makefile
+#sed -i 's/PKG_HASH:=.*/PKG_HASH:=1de6107622b0be2f6d77261f97a2bdd40291dbb682aac7dce08632d171f7a134/g' feeds/packages/utils/btrfs-progs/Makefile
+#rm -rf feeds/packages/utils/btrfs-progs/patches
 
 # qBittorrent (use cmake)
 cp -f $GITHUB_WORKSPACE/general/qBittorrent/Makefile feeds/packages/net/qBittorrent/Makefile
@@ -75,7 +74,7 @@ cp -rf $GITHUB_WORKSPACE/general/openssh feeds/packages/net
 cp -f $GITHUB_WORKSPACE/general/openwrt_banner package/base-files/files/etc/banner
 
 # sqlite3
-cp -rf $GITHUB_WORKSPACE/general/sqlite3 feeds/packages/libs
+#cp -rf $GITHUB_WORKSPACE/general/sqlite3 feeds/packages/libs
 
 
 ./scripts/feeds update -a
