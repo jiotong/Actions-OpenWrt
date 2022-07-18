@@ -47,10 +47,6 @@ rm -rf feeds/packages/utils/btrfs-progs/patches
 # qBittorrent (use cmake)
 cp -f $GITHUB_WORKSPACE/general/qBittorrent/Makefile.qt6 feeds/packages/net/qBittorrent/Makefile
 
-# libtorrent-rasterbar_v2
-rm -rf feeds/packages/libs/libtorrent-rasterbar/patches
-cp -f $GITHUB_WORKSPACE/general/libtorrent-rasterbar/Makefile feeds/packages/libs/libtorrent-rasterbar
-
 # containerd
 cp -f $GITHUB_WORKSPACE/general/containerd/Makefile feeds/packages/utils/containerd
 
