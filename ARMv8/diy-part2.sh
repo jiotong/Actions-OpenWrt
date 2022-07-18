@@ -60,8 +60,6 @@ cp -rf $GITHUB_WORKSPACE/general/qtbase feeds/packages/libs
 rm -rf feeds/packages/libs/qttools
 cp -rf $GITHUB_WORKSPACE/general/qttools feeds/packages/libs
 
-# containerd
-cp -f $GITHUB_WORKSPACE/general/containerd/Makefile feeds/packages/utils/containerd
 
 # transmission-web-control
 sed -i 's/PKG_SOURCE_DATE:=.*/PKG_SOURCE_DATE:=2021-09-25/g' feeds/packages/net/transmission-web-control/Makefile
@@ -76,11 +74,6 @@ sed -i 's/PKG_MIRROR_HASH:=.*/PKG_MIRROR_HASH:=ea014c295766e2efc7b890dc6a6940176
 rm -rf feeds/packages/net/openssh
 cp -rf $GITHUB_WORKSPACE/general/openssh feeds/packages/net
 
-# smartdns
-sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.2022.36.1/g' feeds/packages/net/smartdns/Makefile
-sed -i 's/PKG_SOURCE_VERSION:=.*/PKG_SOURCE_VERSION:=4e2161c6fc51f8f6ee233a52c9b6eed82b816370/g' feeds/packages/net/smartdns/Makefile
-sed -i 's/PKG_MIRROR_HASH:=.*/PKG_MIRROR_HASH:=2c188e88365f014d172fe31cdada6f95563d5e9307a9db45648d029b3fca8d7f/g' feeds/packages/net/smartdns/Makefile
-sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.2022.36/g' package/luci-app-smartdns/Makefile
 
 # replace banner
 cp -f $GITHUB_WORKSPACE/general/openwrt_banner package/base-files/files/etc/banner
