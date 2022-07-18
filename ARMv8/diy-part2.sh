@@ -21,6 +21,19 @@ sed -i 's/192.168.1.1/192.168.1.254/g' package/base-files/files/bin/config_gener
 git clone https://github.com/semigodking/redsocks.git package/redsocks2
 #svn co https://github.com/halldong/luci-app-speederv2/trunk package/luci-app-speederv2
 
+#添加luci-app-amlogic
+#svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
+#修改晶晨宝盒默认配置
+# 1.设置OpenWrt 文件的下载仓库
+#sed -i "s|https.*/OpenWrt|https://github.com/sxml/Actions-OpenWrt|g" package/luci-app-amlogic/root/etc/config/amlogic
+# 2.设置 Releases 里 Tags 的关键字
+#sed -i "s|ARMv8|ARMv8|g" package/luci-app-amlogic/root/etc/config/amlogic
+# 3.设置 Releases 里 OpenWrt 文件的后缀
+#sed -i "s|.img.gz|.img.gz|g" package/luci-app-amlogic/root/etc/config/amlogic
+# 4.设置 OpenWrt 内核的下载路径
+#sed -i "s|opt/kernel|BuildARMv8|g" package/luci-app-amlogic/root/etc/config/amlogic
+#sed -i "s|http.*/library|https://github.com/breakings/OpenWrt/tree/main/opt/kernel|g" package/luci-app-amlogic/root/etc/config/amlogic
+
 #themes
 svn co https://github.com/rosywrt/luci-theme-rosy/trunk/luci-theme-rosy package/luci-theme-rosy
 svn co https://github.com/thinktip/luci-theme-neobird/trunk package/luci-theme-neobird
