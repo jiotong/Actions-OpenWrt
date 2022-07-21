@@ -75,6 +75,10 @@ cp -rf $GITHUB_WORKSPACE/general/openssh feeds/packages/ne
 # replace banner
 cp -f $GITHUB_WORKSPACE/general/openwrt_banner package/base-files/files/etc/banner
 
+# readd cpufreq for aarch64
+sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' feeds/luci/applications/luci-app-cpufreq/Makefile
+sed -i 's/services/system/g'  feeds/luci/applications/luci-app-cpufreq/luasrc/controller/cpufreq.lua
+
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
