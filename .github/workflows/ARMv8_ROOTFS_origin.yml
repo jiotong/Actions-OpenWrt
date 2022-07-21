@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt ARMv8_ROOTFS_origin
+name: Build OpenWrt ARMv8_ROOTFS
 
 on:
   repository_dispatch:
@@ -26,12 +26,14 @@ env:
   REPO_BRANCH: master
   FEEDS_CONF: ARMv8/feeds.conf.default
   CONFIG_FILE: ARMv8/origin.config
+  DIY_P1_SH: ARMv8/diy-part1.sh
+  DIY_P2_SH: ARMv8/diy-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: ARMv8_ROOTFS_origin
-  PRODUCT_NAME: ARMv8_ROOTFS_origin
+  FILE_NAME: ARMv8_ROOTFS_Origin
+  PRODUCT_NAME: ARMv8_ROOTFS_Origin
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -95,6 +97,9 @@ jobs:
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        chmod +x $DIY_P1_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -102,13 +107,13 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: 替换默认IP
-      run: cd openwrt && sed -i 's/192.168.1.1/192.168.1.254/g' package/base-files/files/bin/config_generate
-     
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        chmod +x $DIY_P2_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P2_SH
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
@@ -177,6 +182,7 @@ jobs:
         commit: main
         token: ${{ secrets.RELEASES_TOKEN }}
         body: |
+          - ARMv8底包，非直接固件
           - 默认IP：192.168.1.254 默认密码：password
           - 当前使用版本:【编译前的最后一次[➦主源码](https://github.com/coolsnowwolf/lede)更新记录】
           ${{ env.useVersionInfo }}
