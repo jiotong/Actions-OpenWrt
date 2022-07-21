@@ -71,6 +71,10 @@ svn co https://github.com/Leo-Jo-My/luci-theme-opentomcat/trunk package/luci-the
 #sed -i '175i\	--with-sandbox=no \\' feeds/packages/net/openssh/Makefile
 rm -rf feeds/packages/net/openssh
 cp -rf $GITHUB_WORKSPACE/general/openssh feeds/packages/ne
+
+# replace banner
+cp -f $GITHUB_WORKSPACE/general/openwrt_banner package/base-files/files/etc/banner
+
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
