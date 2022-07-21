@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt ARMv8_ROOTFS
+name: Build OpenWrt ARMv8_Origin
 
 on:
   repository_dispatch:
