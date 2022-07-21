@@ -73,7 +73,7 @@ svn co https://github.com/Leo-Jo-My/luci-theme-opentomcat/trunk package/luci-the
 #sed -i 's/PKG_HASH:=.*/PKG_HASH:=fd497654b7ab1686dac672fb83dfb4ba4096e8b5ffcdaccd262380ae58bec5e7/g' feeds/packages/net/openssh/Makefile
 #sed -i '175i\	--with-sandbox=no \\' feeds/packages/net/openssh/Makefile
 rm -rf feeds/packages/net/openssh
-cp -rf $GITHUB_WORKSPACE/general/openssh feeds/packages/ne
+cp -rf $GITHUB_WORKSPACE/general/openssh feeds/packages/net
 
 # replace banner
 cp -f $GITHUB_WORKSPACE/general/openwrt_banner package/base-files/files/etc/banner
