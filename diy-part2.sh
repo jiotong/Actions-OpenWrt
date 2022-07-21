@@ -17,17 +17,17 @@ sed -i 's/DEPENDS:=@(.*/DEPENDS:=@(TARGET_bcm27xx||TARGET_bcm53xx||TARGET_ipq40x
 sed -i 's/192.168.1.1/192.168.1.254/g' package/base-files/files/bin/config_generate
 
 #添加额外软件包
-cp -rf $GITHUB_WORKSPACE/general/luci-app-gost package/luci-app-gost
-git clone https://github.com/semigodking/redsocks.git package/redsocks2
-svn co https://github.com/halldong/luci-app-speederv2/trunk package/luci-app-speederv2
+#cp -rf $PWD/general/luci-app-gost package/luci-app-gost
+#git clone https://github.com/semigodking/redsocks.git package/redsocks2
+#svn co https://github.com/halldong/luci-app-speederv2/trunk package/luci-app-speederv2
 
 #添加udp2raw
 #git clone https://github.com/sensec/openwrt-udp2raw package/openwrt-udp2raw
-svn co https://github.com/sensec/openwrt-udp2raw/trunk package/openwrt-udp2raw
+#svn co https://github.com/sensec/openwrt-udp2raw/trunk package/openwrt-udp2raw
 #git clone https://github.com/sensec/luci-app-udp2raw package/luci-app-udp2raw
-svn co https://github.com/sensec/luci-app-udp2raw/trunk package/luci-app-udp2raw
-sed -i "s/PKG_SOURCE_VERSION:=.*/PKG_SOURCE_VERSION:=f2f90a9a150be94d50af555b53657a2a4309f287/" package/openwrt-udp2raw/Makefile
-sed -i "s/PKG_VERSION:=.*/PKG_VERSION:=20200920\.0/" package/openwrt-udp2raw/Makefile
+#svn co https://github.com/sensec/luci-app-udp2raw/trunk package/luci-app-udp2raw
+#sed -i "s/PKG_SOURCE_VERSION:=.*/PKG_SOURCE_VERSION:=f2f90a9a150be94d50af555b53657a2a4309f287/" package/openwrt-udp2raw/Makefile
+#sed -i "s/PKG_VERSION:=.*/PKG_VERSION:=20200920\.0/" package/openwrt-udp2raw/Makefile
 
 #themes
 svn co https://github.com/rosywrt/luci-theme-rosy/trunk/luci-theme-rosy package/luci-theme-rosy
@@ -43,12 +43,12 @@ rm -rf feeds/packages/utils/btrfs-progs/patches
 #sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=4.4.0/g' feeds/packages/net/qBittorrent/Makefile
 #sed -i 's/PKG_HASH:=.*/PKG_HASH:=da240744c6cc5953d7c4d298a02a0cf36d2c8897931819f1e6459bd5270a7c5c/g' feeds/packages/net/qBittorrent/Makefile
 #sed -i '41i\		+qt5-sql \\' feeds/packages/net/qBittorrent/Makefile
-#cp -f $GITHUB_WORKSPACE/general/qBittorrent/Makefile feeds/packages/net/qBittorrent
-cp -f $GITHUB_WORKSPACE/general/qBittorrent/Makefile.qt6 feeds/packages/net/qBittorrent/Makefile
+#cp -f $PWD/general/qBittorrent/Makefile feeds/packages/net/qBittorrent
+cp -f $PWD/general/qBittorrent/Makefile.qt6 feeds/packages/net/qBittorrent/Makefile
 
 # libtorrent-rasterbar_v2
 rm -rf feeds/packages/libs/libtorrent-rasterbar/patches
-cp -f $GITHUB_WORKSPACE/general/libtorrent-rasterbar/Makefile feeds/packages/libs/libtorrent-rasterbar
+cp -f $PWD/general/libtorrent-rasterbar/Makefile feeds/packages/libs/libtorrent-rasterbar
 
 # curl
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=7.84.0/g' feeds/packages/net/curl/Makefile
@@ -56,18 +56,18 @@ sed -i 's/PKG_HASH:=.*/PKG_HASH:=2d118b43f547bfe5bae806d8d47b4e596ea5b25a6c1f080
 
 # Qt5 -qtbase
 rm -rf feeds/packages/libs/qtbase
-cp -rf $GITHUB_WORKSPACE/general/qtbase feeds/packages/libs
+cp -rf $PWD/general/qtbase feeds/packages/libs
 
 # Qt5 -qttools
 rm -rf feeds/packages/libs/qttools
-cp -rf $GITHUB_WORKSPACE/general/qttools feeds/packages/libs
+cp -rf $PWD/general/qttools feeds/packages/libs
 
 # node 
 sed -i "s/PKG_VERSION:=v14.18.3/PKG_VERSION:=v14.19.2/g" feeds/packages/lang/node/Makefile
 sed -i "s/PKG_HASH:=783ac443cd343dd6c68d2abcf7e59e7b978a6a428f6a6025f9b84918b769d608/PKG_HASH:=ef4375a9152ff69f2823d7b20a3b53767a046164bbac7824429cb216d1688cf0/g" feeds/packages/lang/node/Makefile
 
 # containerd
-cp -f $GITHUB_WORKSPACE/general/containerd/Makefile feeds/packages/utils/containerd
+cp -f $PWD/general/containerd/Makefile feeds/packages/utils/containerd
 
 # bsdtar
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=3.6.1/g' feeds/packages/libs/libarchive/Makefile
@@ -97,7 +97,7 @@ sed -i 's/PKG_HASH:=.*/PKG_HASH:=d916a26b62970e7c2f554110ed6af04c7ccff8e9f81ad17
 # expat
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=2.4.8/g' feeds/packages/libs/expat/Makefile
 sed -i 's/PKG_HASH:=.*/PKG_HASH:=f79b8f904b749e3e0d20afeadecf8249c55b2e32d4ebb089ae378df479dcaf25/g' feeds/packages/libs/expat/Makefile
-#cp -f $GITHUB_WORKSPACE/general/expat/Makefile feeds/packages/libs/expat
+#cp -f $PWD/general/expat/Makefile feeds/packages/libs/expat
 
 # socat
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.7.4.3/g' feeds/packages/net/socat/Makefile
@@ -215,11 +215,11 @@ sed -i 's/PKG_HASH:=.*/PKG_HASH:=ce5e03e519f637e1f814011ace35c4f87b33c0bbabeec35
 #sed -i 's/PKG_HASH:=.*/PKG_HASH:=fd497654b7ab1686dac672fb83dfb4ba4096e8b5ffcdaccd262380ae58bec5e7/g' feeds/packages/net/openssh/Makefile
 #sed -i '175i\	--with-sandbox=no \\' feeds/packages/net/openssh/Makefile
 rm -rf feeds/packages/net/openssh
-cp -rf $GITHUB_WORKSPACE/general/openssh feeds/packages/net
+cp -rf $PWD/general/openssh feeds/packages/net
 
 # softethervpn5
-rm -rf feeds/packages/net/softethervpn5
-svn co https://github.com/openwrt/packages/trunk/net/softethervpn5 feeds/packages/net/softethervpn5
+#rm -rf feeds/packages/net/softethervpn5
+#svn co https://github.com/openwrt/packages/trunk/net/softethervpn5 feeds/packages/net/softethervpn5
 
 # hwdata
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=0.361/g' feeds/packages/utils/hwdata/Makefile
@@ -239,7 +239,7 @@ sed -i 's/PKG_HASH:=.*/PKG_HASH:=de75b6136958173fdfc530d38a0145b72342cf0d3842bf7
 
 # at
 rm -rf feeds/packages/utils/at
-cp -rf $GITHUB_WORKSPACE/general/at feeds/packages/utils
+cp -rf $PWD/general/at feeds/packages/utils
 
 # alsa-utils
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=1.2.6/g' feeds/packages/sound/alsa-utils/Makefile
@@ -326,18 +326,18 @@ sed -i 's/services/vpn/g'  feeds/luci/applications/luci-app-openvpn/luasrc/view/
 sed -i 's/DEPENDS:=.*/DEPENDS:=@(LINUX_5_4||LINUX_5_10) +kmod-nls-utf8/g' package/lean/ntfs3-oot/Makefile
 
 # fix kernel modules missing nfs_ssc.ko
-cp -f $GITHUB_WORKSPACE/general/fs.mk package/kernel/linux/modules
+cp -f $PWD/general/fs.mk package/kernel/linux/modules
 rm -f target/linux/generic/backport-5.10/350-v5.12-NFSv4_2-SSC-helper-should-use-its-own-config.patch
 rm -f target/linux/generic/backport-5.10/351-v5.13-NFSv4_2-Remove-ifdef-CONFIG_NFSD-from-client-SSC.patch
-cp -f $GITHUB_WORKSPACE/general/01-export-nfs_ssc.patch target/linux/generic/backport-5.15
-cp -f $GITHUB_WORKSPACE/general/003-add-module_supported_device-macro.patch target/linux/generic/backport-5.15
+cp -f $PWD/general/01-export-nfs_ssc.patch target/linux/generic/backport-5.15
+cp -f $PWD/general/003-add-module_supported_device-macro.patch target/linux/generic/backport-5.15
 
 # replace banner
-cp -f $GITHUB_WORKSPACE/general/openwrt_banner package/base-files/files/etc/banner
+cp -f $PWD/general/openwrt_banner package/base-files/files/etc/banner
 
 # boost
 rm -rf feeds/packages/libs/boost
-cp -r $GITHUB_WORKSPACE/general/boost feeds/packages/libs
+cp -r $PWD/general/boost feeds/packages/libs
 
 
 # zsh
@@ -358,14 +358,14 @@ sed -i 's/PKG_RELEASE:=.*/PKG_RELEASE:=1/g' feeds/packages/libs/libssh2/Makefile
 sed -i 's/PKG_HASH:=.*/PKG_HASH:=2d64e90f3ded394b91d3a2e774ca203a4179f69aebee03003e5a6fa621e41d51/g' feeds/packages/libs/libssh2/Makefile
 
 # sqlite3
-cp -rf $GITHUB_WORKSPACE/general/sqlite3 feeds/packages/libs
+cp -rf $PWD/general/sqlite3 feeds/packages/libs
 
 # haproxy
 sed -i 's/PKG_RELEASE:=.*/PKG_RELEASE:=1/g' feeds/packages/net/haproxy/Makefile
 
 # perl
 rm -rf feeds/packages/lang/perl
-cp -rf $GITHUB_WORKSPACE/general/perl feeds/packages/lang
+cp -rf $PWD/general/perl feeds/packages/lang
 
 # zlib
 rm -rf package/libs/zlib
@@ -377,7 +377,7 @@ sed -i 's/PKG_HASH:=.*/PKG_HASH:=303ef87926d5d02b65827a5c955308047bd4d0995abee15
 
 # util-linux
 rm -rf package/utils/util-linux
-cp -rf $GITHUB_WORKSPACE/general/util-linux package/utils
+cp -rf $PWD/general/util-linux package/utils
 
 # lsof
 sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=4.95.0/g' feeds/packages/utils/lsof/Makefile
